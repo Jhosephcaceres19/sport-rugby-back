@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+const diagrama = require('../src/models/diagrama');
+const usuario = require('../src/models/usuario');
 module.exports = (sequelize, DataTypes) => {
   class Usuario extends Model {
     /**
@@ -10,7 +12,26 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      
+      usuario.hasMany(diagrama, {
+        foreignKey: 'usuarioID',
+        sourceyKey: 'id'
+      })
+
+      diagrama.belongsTo(usuario, {
+        foreignKey: 'usuarioID',
+        targetId: 'id'
+      })
+
+      usuario.hasMany(codigo, {
+        foreignKey: 'usuarioID',
+        sourceyKey: 'id'
+      })
+
+      codigo.belongsTo(usuario{
+        foreignKey: 'usuarioID',
+        targetId: 'id'
+      })
     }
   }
   Usuario.init({
