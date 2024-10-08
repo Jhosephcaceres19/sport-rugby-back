@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         sourceyKey: 'id'
       })
 
-      codigo.belongsTo(usuario{
+      codigo.belongsTo(usuario, {
         foreignKey: 'usuarioID',
         targetId: 'id'
       })

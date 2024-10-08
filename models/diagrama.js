@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         sourceyKey: 'id'
       })
 
-      codigo this.belongsTo(diagrama,{
+      codigo.belongsTo(diagrama, {
         foreignKey: 'diagramaID',
         targetId: 'id'
       })
