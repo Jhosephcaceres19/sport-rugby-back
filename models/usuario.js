@@ -1,47 +1,40 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-const diagrama = require('../src/models/diagrama');
-const usuario = require('../src/models/usuario');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Usuario extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      
-      usuario.hasMany(diagrama, {
+      models.Usuario.hasMany(models.Diagrama, {
         foreignKey: 'usuarioID',
-        sourceyKey: 'id'
-      })
+        sourceKey: 'id'
+      });
 
-      diagrama.belongsTo(usuario, {
+      models.Diagrama.belongsTo(models.Usuario, {
         foreignKey: 'usuarioID',
-        targetId: 'id'
-      })
+        targetKey: 'id'
+      });
 
-      usuario.hasMany(codigo, {
+      models.Usuario.hasMany(models.Codigo, {
         foreignKey: 'usuarioID',
-        sourceyKey: 'id'
-      })
+        sourceKey: 'id'
+      });
 
-      codigo.belongsTo(usuario, {
+      models.Codigo.belongsTo(models.Usuario, {
         foreignKey: 'usuarioID',
-        targetId: 'id'
-      })
+        targetKey: 'id'
+      });
     }
   }
+
   Usuario.init({
     username: DataTypes.STRING,
-    password: DataTypes.VARCHAR(255),
-    correo: DataTypes.VARCHAR(255),
+    password: DataTypes.STRING,
+    correo: DataTypes.STRING,
     nombre: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Usuario',
+    timestamps: false,
   });
+
   return Usuario;
 };

@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Diagrama',
+    timestamps: false,
   });
   return Diagrama;
 };
