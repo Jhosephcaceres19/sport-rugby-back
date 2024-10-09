@@ -1,10 +1,10 @@
 const express = require("express");
 const cors = require('cors');
 const app = express()
-const usuarioRoutes = require ('./routes/usuario');
-const codigoRoutes = require ('./routes/codigo');
-const diagramaRoutes = require('./routes/diagrama');
-const lenguajeRoutes = require('./routes/lenguaje');
+const usuarioRoutes = require ('../../routes/usuario');
+const codigoRoutes = require ('../../routes/codigo');
+const diagramaRoutes = require('../../routes/diagrama');
+const lenguajeRoutes = require('../../routes/lenguaje');
 
 app.use(cors());
 app.use(express.json());
