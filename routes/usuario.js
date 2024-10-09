@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {usuario} = require('../models');
+const {usuario} = require('../models/usuario');
 
 //Obtener todos los usuarios
-router.get('/usuario', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
         const usuarios = await usuario.findAll();
         res.json(usuarios);
@@ -52,7 +52,7 @@ router.put('/usuario/:id', async (req, res) => {
 });
 
 //Eliminar un usuario
-router.delete('/usuario:id', async (req, res) => {
+router.delete('/usuario/:id', async (req, res) => {
     try{
         const usuario = await usuario.findByPk(req.params.id);
         if (usuario) {
